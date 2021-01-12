@@ -1,0 +1,79 @@
+<h1 class="c1"> {{title}} </h1>
+
+<!--
+    below is just a simple ngif, if success_message is true in  component.ts then show User added susscessfully.
+    but if in component.ts is false then move to error message and show user was not added. 
+    In order for error message to show up we HAVE to use the ng-template.  
+
+  <div *ngIf="success_message ; then updated_msg; else error_message">
+      we can add THEN statement as well. However if the statment is true it will skip over first message and go to THEN statement.
+-->
+<div class="c2">
+  <div *ngIf="success_message ;then updated_msg; else error_message">
+    User added successfully
+  </div>
+  <ng-template #error_message>
+    User was not added
+  </ng-template>
+
+  <ng-template #updated_msg>
+    User was added
+  </ng-template>
+</div> 
+
+<h2>Learning ngIf / For </h2>
+
+<ul>
+  <li *ngFor="let contact of contacts; index as i; first as f; last as l ">
+    <div *ngIf="f"> This is the First Record</div>
+    <div>
+      {{ i }} - - {{contact.firstName}} {{contact.lastName}}
+      <div *ngIf="l"> This is the Last Record</div>
+    </div>
+
+  </li>
+</ul>
+
+<h2> New table focusing on odd and even </h2>
+<ul>
+  <li *ngFor="let contact of contacts; index as i; odd as o; even as e ">
+    <div *ngIf="o" style="background-color: aquamarine;">
+      {{ i }} - - {{contact.firstName}} {{contact.lastName}}
+
+    </div>
+    <div>
+
+      <div *ngIf="e" style="background-color: cadetblue;">
+        {{ i }} - - {{contact.firstName}} {{contact.lastName}}
+      </div>
+    </div>
+
+  </li>
+</ul>
+
+<h2> Ng Switch</h2>
+<div> 
+<div [ngSwitch]="superPower">
+  <!-- "superPower is defined in component, so whatever superPower is defined will reflect here.-->
+  <div *ngSwitchCase=" 'wonderWoman' "> Display wonderWoman super power </div>
+  <div *ngSwitchCase=" 'ironMan' "> Display IronMan super power </div>
+  <div *ngSwitchCase=" 'hulk' "> Display Hulk super power </div>
+  <div *ngSwitchDefault> SuperPower are under construction</div>
+  <!-- if none of the values matches then its a good idea to have  switchDefault so it can go to a default message.-->
+</div>
+
+<div [ngSwitch]="tax">
+  <div *ngSwitch="25" > Display Tax is 20 </div>
+  <div *ngSwitch=" 25 "> Display Tax is 25% </div>
+  <div *ngSwitchDefault> Taxes have not been calculated </div>
+</div>
+</div>
+<br>
+
+
+<h2> Learning ngStyle </h2>
+<div [ngStyle]= "{'background-color': 'blue', 'color': 'white', 'text-align': 'center'}"> This blue </div>
+
+ 
+
+<router-outlet></router-outlet>

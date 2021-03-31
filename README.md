@@ -13,5 +13,5 @@ then you have to go into angular.json and update the following
 Angular Material to add  ng add @angular/material
  UI component library. help in constructing attractive, consistent, and functional web pages and web applications while adhering to modern web design principles like browser portability, device independence, and graceful degradation.
 gives the option of picking themes. 
-check package.json. to make sure its installed
+check package.json. to make sure its installed.
 
